@@ -1,0 +1,45 @@
+<main class="measure py2">
+  <h1 class="txt--center">San Francisco Hackathons</h1>
+  <% @events.each do |event| %>
+    <div class="brdr--off-white p1 my1 media">
+      <div class="media-figure py1 brdr--light-gray txt--center calbox">
+        <div style="width: 100%">
+          <span class="h5 p0 m0 txt--left"><%= event.start_date.strftime('%b') %></span>
+          <% if event.end_date && event.end_date.month != event.start_date.month %>
+            <span class="h5 p0 m0 ">- <%= event.end_date.strftime('%b') %></span>
+          <% end %>
+        </div>
+        <div class="h3 m00">
+          <%= event.start_date.day %>
+          <% if event.end_date %>
+            - <%= event.end_date.day %>
+          <% end %>
+        </div>
+      </div>
+      <div class="media-body grd">
+        <div class="grd-row">
+          <div class="grd-row-col-4-6">
+            <a class="h3 m00 p0 fnt--green" href="<%= event.link %>"><%= event.title %></a>
+          </div>
+          <% if event.hours %>
+            <div class="grd-row-col-2-6">
+                <span class="h3 muted">- <%= event.hours %> hours</span>
+            </div>
+          <% end %>
+        </div>
+        <div class="grd-row">
+          <%= event.blurb %>
+        </div>
+        <div class="grd-row muted">
+          <div class="txt--right">
+            Hosted at <%= "<b>#{h(event.venue)}</b> - ".html_safe if event.venue.present? %><a href="https://maps.google.com?q=<%=u event.address %>"><%= event.address %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</main>
+  <button class="btn">Button</button>
+  <button class="btn--red">Button</button>
+  <button class="btn--green">Button</button>
+  <button class="btn--blue">Button</button>

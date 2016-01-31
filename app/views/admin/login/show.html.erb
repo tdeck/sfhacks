@@ -1,0 +1,20 @@
+<main class="measure my2 p2">
+  <h1 class="txt--center">Admin Login</h1>
+  <form method="POST">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="grd">
+      <div class="grd-row">
+        <div class="grd-row-col-1-6 py2"></div>
+        <div class="grd-row-col-3-6 py2">
+          <input type="password" id="password" name="password">
+        </div>
+        <div class="grd-row-col-1-6 py1">
+          <input class="btn--blue" type="submit" value="Log in">
+        </div>
+      </div>
+      <div class="grd-row">
+        <div class="grd-row-col-3-6"></div>
+      </div>
+    </div>
+  </form>
+</main>

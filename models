@@ -1,0 +1,10 @@
+Lead:
+    Source, ID, Date, Title, URL
+Event:
+    start_date
+    end_date
+    address
+    title
+    link
+    blurb
+    hours

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SF Hackathons</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if flash[:notice] %>
+  <div class="m00 px2 bg--red fnt--white h3"><%= flash[:notice] %></div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
