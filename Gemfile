@@ -25,6 +25,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Annotate ActiveRecord models with fields
 gem 'annotate'
 
+gem 'clockwork'
+gem 'delayed_job_active_record'
+gem 'rest-client'
+
 # Use bower assets
 source 'https://rails-assets.org' do
   gem 'rails-assets-furtive' # Furtive - minimal CSS framework
