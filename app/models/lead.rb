@@ -23,5 +23,5 @@ class Lead < ActiveRecord::Base
   scope :pending, -> { where('not reviewed and date >= ?', Date.today) }
 
   validates :key, uniqueness: true
-  validates_presence_of :title, :date, :location, :url
+  validates_presence_of :title, :date, :url
 end

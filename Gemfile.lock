@@ -173,6 +173,7 @@ DEPENDENCIES
   delayed_job_active_record
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   pg
   rails (> 4.2.5)
   rails-assets-furtive!

@@ -28,6 +28,7 @@ gem 'annotate'
 gem 'clockwork'
 gem 'delayed_job_active_record'
 gem 'rest-client'
+gem 'nokogiri'
 
 # Use bower assets
 source 'https://rails-assets.org' do
