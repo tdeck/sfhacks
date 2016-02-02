@@ -14,7 +14,7 @@ class PollEventbriteJob < ActiveJob::Base
             .values_at(:address_1, :address_2, :city, :region)
             .compact.join(', '),
         url: event[:url],
-        key: event[:id],
+        key: event_key(event),
         reviewed: false
       )
     end
@@ -22,11 +22,15 @@ class PollEventbriteJob < ActiveJob::Base
     Rails.logger.info("Added #{good_events.count} leads from eventbrite.")
   end
 
+  def event_key(event)
+    "eb-#{event[:id]}"
+  end
+
   def bad_event?(event)
     # TODO we should be able to pull canceled events later
     event[:online_event] ||
       event[:status].in?(%w(canceled ended)) ||
-      Lead.exists?(key: event[:id])
+      Lead.exists?(key: event_key(event))
   end
 
   def all_events
