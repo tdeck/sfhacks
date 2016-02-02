@@ -1,9 +1,16 @@
 class PollMeetupJob < ActiveJob::Base
   queue_as :default
 
-  # TODO need to add deduplication
   def perform(*args)
-    good_events = all_events.reject { |e| Lead.exists?(key: event_key(e)) }
+    # We do a bit of deduplication before storing the events
+    # to filter out reposts with the same time and title in
+    # different groups. Since the time is the same, these will
+    # always appear in the list together until they have passed,
+    # so in theory processing the whole list in memory is enough.
+    good_events = all_events
+      .sort_by { |e| e[:id] }
+      .uniq { |e| e.values_at(:name, :time) }
+      .reject { |e| Lead.exists?(key: event_key(e)) }
 
     good_events.each do |event|
       address = '(unknown)' 
