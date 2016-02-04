@@ -14,7 +14,8 @@ class Admin::ListingsController < ApplicationController
       :blurb,
       :start_date,
       :end_date,
-      :hours
+      :hours,
+      :students_only
     )
 
     args[:start_date] = Date.parse(args[:start_date])

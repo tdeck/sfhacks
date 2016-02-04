@@ -2,17 +2,18 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
-#  start_date :date             not null
-#  end_date   :date
-#  address    :string           not null
-#  title      :string           not null
-#  link       :string           not null
-#  blurb      :text             not null
-#  hours      :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  venue      :string           default(""), not null
+#  id            :integer          not null, primary key
+#  start_date    :date             not null
+#  end_date      :date
+#  address       :string           not null
+#  title         :string           not null
+#  link          :string           not null
+#  blurb         :text             not null
+#  hours         :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  venue         :string           default(""), not null
+#  students_only :boolean          default(FALSE), not null
 #
 # Indexes
 #

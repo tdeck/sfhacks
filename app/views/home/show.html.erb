@@ -30,16 +30,21 @@
         <div class="grd-row">
           <%= event.blurb %>
         </div>
+        <% if event.students_only %>
+          <div class="grd-row fnt--orange">
+            Only open to students
+          </div>
+        <% end %>
         <div class="grd-row muted">
-          <div class="txt--right">
-            Hosted at <%= "<b>#{h(event.venue)}</b> - ".html_safe if event.venue.present? %><a href="https://maps.google.com?q=<%=u event.address %>"><%= event.address %></a>
+          <div>
+            Hosted at <%= "<b>#{h(event.venue)}</b> - ".html_safe if event.venue.present? %>
+            <a href="https://maps.google.com?q=<%=u event.address %>"><%= event.address %></a>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </main>
-  <button class="btn">Button</button>
-  <button class="btn--red">Button</button>
-  <button class="btn--green">Button</button>
-  <button class="btn--blue">Button</button>
+<footer class="txt--right measure p2">
+  <%= link_to 'Admin', controller: 'admin/listings', action: :index %>
+</footer>
