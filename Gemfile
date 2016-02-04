@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
 ruby '2.2.1'
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>4.2.5'
@@ -29,6 +29,9 @@ gem 'clockwork'
 gem 'delayed_job_active_record'
 gem 'rest-client'
 gem 'nokogiri'
+
+# Something Dokku uses
+gem 'rails_12factor', group: :production
 
 # Use bower assets
 source 'https://rails-assets.org' do
