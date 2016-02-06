@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def show
-    @events = Event.current
+    @events = Event.current.order(:start_date)
   end
 end
