@@ -65,7 +65,7 @@ class Admin::ListingsController < ApplicationController
         location: event.address,
         url: event.link
       }
-    end).sort_by { |x| x[:date] }
+    end).sort_by { |x| [ x[:date], x[:title].downcase ] }
   end
 
 private
