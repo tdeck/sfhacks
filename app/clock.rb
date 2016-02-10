@@ -7,4 +7,5 @@ every(1.hour, 'grab_leads') do
   PollMeetupJob.perform_later
   PollDevpostJob.perform_later
   PollHackworksJob.perform_later
+  PollMlhJob.perform_later
 end
