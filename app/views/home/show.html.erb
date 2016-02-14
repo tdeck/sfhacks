@@ -43,6 +43,14 @@
     </div>
   <% end %>
 </main>
-<footer class="txt--right measure p2">
-  <%= link_to 'Admin', controller: 'admin/listings', action: :index %>
+<footer class="measure p2 grd">
+  <div class="grd-row">
+    <div class="grd-row-col-4-6"></div>
+    <div class="grd-row-col-1-6">
+      <a href="https://github.com/tdeck/sfhacks">GitHub</a>
+    </div>
+    <div class="grd-row-col-1-6">
+      <%= link_to 'Admin', controller: 'admin/listings', action: :index %>
+    </div>
+  </div>
 </footer>
