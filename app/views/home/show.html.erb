@@ -28,9 +28,9 @@
           <% end %>
         </div>
         <div class="grd-row blurb"><%= event.blurb %></div>
-        <% if event.students_only %>
+        <% if event.restricted_to.present? %>
           <div class="grd-row fnt--orange">
-            Only open to students
+            Only open to <%= event.restricted_to %>
           </div>
         <% end %>
         <div class="grd-row muted">

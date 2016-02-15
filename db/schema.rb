@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204060548) do
+ActiveRecord::Schema.define(version: 20160215074201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,17 +33,17 @@ ActiveRecord::Schema.define(version: 20160204060548) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.date     "start_date",                    null: false
+    t.date     "start_date",                 null: false
     t.date     "end_date"
-    t.string   "address",                       null: false
-    t.string   "title",                         null: false
-    t.string   "link",                          null: false
-    t.text     "blurb",                         null: false
+    t.string   "address",                    null: false
+    t.string   "title",                      null: false
+    t.string   "link",                       null: false
+    t.text     "blurb",                      null: false
     t.integer  "hours"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "venue",         default: "",    null: false
-    t.boolean  "students_only", default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "venue",         default: "", null: false
+    t.string   "restricted_to"
   end
 
   add_index "events", ["start_date"], name: "index_events_on_start_date", using: :btree

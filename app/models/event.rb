@@ -14,6 +14,7 @@
 #  updated_at    :datetime         not null
 #  venue         :string           default(""), not null
 #  students_only :boolean          default(FALSE), not null
+#  restricted_to :string
 #
 # Indexes
 #
