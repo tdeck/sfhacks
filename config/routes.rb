@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#show'
+  root 'home#index'
 
   get 'admin/login' => 'admin/login#show'
   post 'admin/login' => 'admin/login#submit'
