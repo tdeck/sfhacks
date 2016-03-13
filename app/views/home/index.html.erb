@@ -3,18 +3,30 @@
   <% @events.each do |event| %>
     <div class="brdr--off-white p1 my1 media">
       <div class="media-figure py1 brdr--light-gray txt--center calbox">
-        <div style="width: 100%">
-          <span class="h5 p0 m0 txt--left"><%= event.start_date.strftime('%b') %></span>
-          <% if event.end_date && event.end_date.month != event.start_date.month %>
-            <span class="h5 p0 m0 ">- <%= event.end_date.strftime('%b') %></span>
-          <% end %>
-        </div>
-        <div class="h3 m00">
-          <%= event.start_date.day %>
-          <% if event.end_date %>
-            - <%= event.end_date.day %>
-          <% end %>
-        </div>
+        <% if event.end_date && (event.end_date.month != event.start_date.month) %>
+          <span>
+            <div class="h5 p0 m0"><%= event.start_date.strftime('%b') %></div>
+            <div class="h3 m00"><%= event.start_date.day %></div>
+          </span>
+          <span class="h3">-</span>
+          <span>
+            <div class="h5 p0 m0"><%= event.end_date.strftime('%b') %></div>
+            <div class="h3 m00"><%= event.end_date.day %></div>
+          </span>
+        <% else %>
+          <div style="width: 100%">
+            <span class="h5 p0 m0 txt--left"><%= event.start_date.strftime('%b') %></span>
+            <% if event.end_date && event.end_date.month != event.start_date.month %>
+              <span class="h5 p0 m0 ">- <%= event.end_date.strftime('%b') %></span>
+            <% end %>
+          </div>
+          <div class="h3 m00">
+            <%= event.start_date.day %>
+            <% if event.end_date %>
+              - <%= event.end_date.day %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="media-body grd">
         <div class="grd-row">
