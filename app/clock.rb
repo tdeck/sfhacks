@@ -11,4 +11,5 @@ every(1.day, 'grab_leads') do
   PollHackalistJob.perform_later
 
   ReviewBlacklistedJob.set(wait: 5.minutes).perform_later
+  MailAlerterJob.set(wait: 6.minutes).perform_later
 end
