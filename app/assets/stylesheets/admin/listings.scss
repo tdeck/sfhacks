@@ -12,6 +12,6 @@ input[type=checkbox] {
     margin: 2px;
 }
 
-#students_only {
-    display: inline-block;
+#blurb {
+    height: 16em; /* Seems to be about the length of a long blurb on desktop */
 }
