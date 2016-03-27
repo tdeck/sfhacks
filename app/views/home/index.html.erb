@@ -1,7 +1,8 @@
+<%= content_for :head, auto_discovery_link_tag(:atom, index_url(format: "atom")) %>
 <main class="measure py2">
   <h1 class="txt--center">San Francisco Hackathons</h1>
   <% @events.each do |event| %>
-    <div class="brdr--off-white p1 my1 media">
+    <div id="e<%= event.id %>" class="brdr--off-white p1 my1 media">
       <div class="media-figure py1 brdr--light-gray txt--center calbox">
         <% if event.end_date && (event.end_date.month != event.start_date.month) %>
           <span>
@@ -57,7 +58,10 @@
 </main>
 <footer class="measure p2 grd">
   <div class="grd-row">
-    <div class="grd-row-col-4-6"></div>
+    <div class="grd-row-col-3-6"></div>
+    <div class="grd-row-col-1-6">
+      <%= link_to 'Atom feed', controller: 'home', action: :index, format: :atom %>
+    </div>
     <div class="grd-row-col-1-6">
       <a href="https://github.com/tdeck/sfhacks">GitHub</a>
     </div>
