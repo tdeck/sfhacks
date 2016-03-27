@@ -22,7 +22,15 @@
             </td>
             <td><%= listing[:date] %></td>
             <td><a href="<%= listing[:url] %>"><%= listing[:title] %></a></td>
-            <td><%= listing[:location] %></td>
+            <td>
+
+              <a href="<%=
+                'https://maps.google.com?' + {
+                  saddr: 'San Francisco, CA',
+                  daddr: listing[:location]
+                }.to_query %>">
+                <%= listing[:location] %></td>
+              </a>
           </tr>
         <% end %>
       </tbody>
@@ -48,10 +56,10 @@
     <label for="blurb">Blurb</label>
     <textarea id="blurb" name="blurb" required="required"></textarea>
 
-    <label for="start_date">Start date <small>(YYYY-MM-DD)</small></label> 
+    <label for="start_date">Start date <small>(YYYY-MM-DD)</small></label>
     <input type="date" id="start_date" name="start_date" required="required">
 
-    <label for="end_date">End date <small>(YYYY-MM-DD, optional)</small></label> 
+    <label for="end_date">End date <small>(YYYY-MM-DD, optional)</small></label>
     <input type="date" id="end_date" name="end_date">
 
     <label for="hours">Hours <small>(optional)</small></label>
