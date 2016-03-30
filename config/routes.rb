@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'index' => 'home#index'
 
-  get 'admin/login' => 'admin/login#show'
-  post 'admin/login' => 'admin/login#submit'
+  namespace :admin do
+    get 'login' => 'login#show'
+    post 'login' => 'login#submit'
 
-  get 'admin/listings' => 'admin/listings#index'
-  post 'admin/listings' => 'admin/listings#create'
-  patch 'admin/listings' => 'admin/listings#patch'
+    get 'listings' => 'listings#index'
+    post 'listings' => 'listings#create'
+    patch 'listings' => 'listings#patch'
+
+    resources :blacklists, only: [:index, :create, :update, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,6 +1,9 @@
 <main class="measure py2">
   <h2>Review Leads</h2>
   <form method="POST">
+    <div class="txt--right">
+      <a class="fnt--orange" href="/admin/blacklists">Manage blacklists</a>
+    </div>
     <input name="_method" type="hidden" value="patch">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <table>

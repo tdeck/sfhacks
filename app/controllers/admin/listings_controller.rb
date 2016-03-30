@@ -67,10 +67,4 @@ class Admin::ListingsController < ApplicationController
       }
     end).sort_by { |x| [ x[:date], x[:title].downcase ] }
   end
-
-private
-  def require_admin
-    Rails.logger.info "SESSION: #{session[:admin]}"
-    redirect_to controller: :login, action: :show if !session[:admin]
-  end
 end
