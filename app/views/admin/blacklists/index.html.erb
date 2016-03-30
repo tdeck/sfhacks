@@ -23,9 +23,7 @@
     <tbody>
       <% @blacklists.each do |bl| %>
         <tr>
-          <!-- TODO this is really horrible and lazy -->
           <td><%= link_to 'Delete', admin_blacklist_url(bl.id), method: :delete %></td>
-          <td><a class="txt--red" href="<%= "?method=delete&id=#{bl.id}" %>" >dlt</a></td>
           <td class="h4"><code><%= bl.substring %></code></td>
         </tr>
       <% end %>
