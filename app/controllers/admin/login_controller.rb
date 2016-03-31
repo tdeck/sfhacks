@@ -10,7 +10,7 @@ class Admin::LoginController < ApplicationController
       session[:admin] = true
       redirect_to controller: :listings, action: :index
     else
-      flash[:notice] = 'Incorrect password.'
+      flash[:alert] = 'Incorrect password.'
       redirect_to action: :show
     end
   end

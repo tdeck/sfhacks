@@ -9,8 +9,11 @@
   <%= yield :head %>
 </head>
 <body>
+<% if flash[:alert] %>
+  <div class="m00 px2 bg--red fnt--white h4"><%= flash[:alert] %></div>
+<% end %>
 <% if flash[:notice] %>
-  <div class="m00 px2 bg--red fnt--white h3"><%= flash[:notice] %></div>
+  <div class="m00 px2 bg--green fnt--white h4"><%= flash[:notice] %></div>
 <% end %>
 
 <%= yield %>
