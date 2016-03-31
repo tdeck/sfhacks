@@ -4,14 +4,11 @@
   <form method="POST" class="grd">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="grd-row">
-      <div class="grd-row-col-1-6 py2">
-        <label for="substring">Substring</label>
+      <div class="grd-row-col-3-6">
+        <input type="text" placeholder="substring" name="substring" required="required">
       </div>
-      <div class="grd-row-col-3-6 py2">
-        <input type="text" id="substring" name="substring" required="required">
-      </div>
-      <div class="grd-row-col-3-6 py1">
-        <input class="btn--red" type="submit" value="Add">
+      <div class="grd-row-col-2-6">
+        <input class="btn--blue" type="submit" value="Add">
       </div>
     </div>
   </form>
@@ -23,7 +20,7 @@
     <tbody>
       <% @blacklists.each do |bl| %>
         <tr>
-          <td><%= link_to 'Delete', admin_blacklist_url(bl.id), method: :delete %></td>
+          <td><%= link_to '✕', admin_blacklist_url(bl.id), method: :delete, class: 'fnt--red' %></td>
           <td class="h4"><code><%= bl.substring %></code></td>
         </tr>
       <% end %>

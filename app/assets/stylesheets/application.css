@@ -18,3 +18,8 @@
 .m00 {
   margin: 0 !important;
 }
+
+/* Helps align inputs next to buttons in a row */
+input[type=submit] {
+  margin-top: -1px !important;
+}
