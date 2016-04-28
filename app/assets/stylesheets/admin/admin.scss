@@ -1,0 +1,13 @@
+table {
+    font-size: 18px;
+}
+
+input[type=checkbox] {
+    width: 1em;
+    height: 1em;
+    margin: 2px;
+}
+
+#event_blurb {
+    height: 16em; /* Seems to be about the length of a long blurb on desktop */
+}

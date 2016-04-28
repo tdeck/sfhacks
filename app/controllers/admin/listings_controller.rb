@@ -3,34 +3,11 @@ class Admin::ListingsController < ApplicationController
   before_action :require_admin
 
   def index
+    @event = Event.new
   end
 
   def create
-    args = params.permit(
-      :title,
-      :venue,
-      :address,
-      :link,
-      :blurb,
-      :start_date,
-      :end_date,
-      :hours,
-      :restricted_to
-    )
-
-    args[:start_date] = Date.parse(args[:start_date])
-    if args[:end_date].present?
-      args[:end_date] = Date.parse(args[:end_date])
-    else
-      args.delete(:end_date)
-    end
-    if args[:hours].present?
-      args[:hours] = args[:hours].to_i
-    else
-      args.delete(:hours)
-    end
-
-    Event.create!(args)
+    Event.create!(event_params)
 
     redirect_to action: :index
   end
@@ -66,5 +43,34 @@ class Admin::ListingsController < ApplicationController
         url: event.link
       }
     end).sort_by { |x| [ x[:date], x[:title].downcase ] }
+  end
+
+private
+  def event_params
+    args = params.require(:event).permit(
+      :title,
+      :venue,
+      :address,
+      :link,
+      :blurb,
+      :start_date,
+      :end_date,
+      :hours,
+      :restricted_to
+    )
+
+    args[:start_date] = Date.parse(args[:start_date])
+    if args[:end_date].present?
+      args[:end_date] = Date.parse(args[:end_date])
+    else
+      args.delete(:end_date)
+    end
+    if args[:hours].present?
+      args[:hours] = args[:hours].to_i
+    else
+      args.delete(:hours)
+    end
+
+    args
   end
 end

@@ -1,0 +1,30 @@
+<%= form_for(@event, url: request.path) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, required: true %> 
+
+  <%= f.label :venue do %> Venue name <small>(optional)</small><% end %>
+  <%= f.text_field :venue %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, required: true %>
+
+  <%= f.label :link, 'Link URL' %>
+  <%= f.url_field :link, required: true %>
+
+  <%= f.label :blurb %>
+  <%= f.text_area :blurb, required: true %>
+
+  <%= f.label :start_date do %>Start date <small>(YYYY-MM-DD)</small><% end %>
+  <%= f.date_field :start_date, required: true %>
+
+  <%= f.label :end_date do %>End date <small>(YYYY-MM-DD, optional)</small><% end %>
+  <%= f.date_field :end_date %>
+
+  <%= f.label :hours do %>Hours <small>(optional)</small><% end %>
+  <%= f.number_field :hours, step: 1 %>
+
+  <%= f.label :restricted_to do %>Restricted to <small>(optional)</small><% end %>
+  <%= f.text_field :restricted_to %>
+
+  <input class="btn--blue" type="submit" value="Submit">
+<% end %>
