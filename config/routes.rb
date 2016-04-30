@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     post 'listings' => 'listings#create'
     patch 'listings' => 'listings#patch'
 
+    get 'listings/:id/edit' => 'listings#edit'
+    put 'listings/:id' => 'listings#update'
+
     resources :blacklists, only: [:index, :create, :update, :destroy]
   end
 

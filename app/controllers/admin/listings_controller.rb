@@ -4,25 +4,41 @@ class Admin::ListingsController < ApplicationController
 
   def index
     @event = Event.new
+    @form_params = {url: '/admin/listings'}
   end
 
   def create
     Event.create!(event_params)
 
-    redirect_to action: :index
+    redirect_to admin_listings_url, notice: 'Post successfully created.'
   end
 
   def patch
     lead_ids = params.require(:reviewed_leads)
     lead_ids.each do |id|
       lead = Lead.find_by_id!(id.to_i)
-      Rails.logger.info "Reviewed lead:"
-      Rails.logger.info lead
       lead.reviewed = true
       lead.save!
     end
+
+    notice = lead_ids.count > 0 ? "Hid #{lead_ids.count} lead(s)." : nil
+    Rails.logger.info "NOTICE: #{notice}"
   
-    redirect_to action: :index
+    redirect_to admin_listings_url, notice: notice
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    @form_params = {
+      url: @event.update_url,
+      method: :put
+    }
+  end
+
+  def update
+    event = Event.find(params[:id])
+    event.update_attributes!(event_params)
+    redirect_to admin_listings_url, notice: 'Post successfully updated.'
   end
 
   def listings
@@ -37,6 +53,8 @@ class Admin::ListingsController < ApplicationController
       }
     end + Event.current.map do |event|
       {
+        event_id: event.id,
+        edit_url: event.edit_url,
         date: event.start_date,
         title: event.title,
         location: event.address,

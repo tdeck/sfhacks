@@ -13,7 +13,7 @@ class Admin::BlacklistsController < ApplicationController
 
     respond_to do |format|
       if @blacklist.save
-        format.html { redirect_to admin_blacklists_url, notice: 'Blacklist was successfully created.' }
+        format.html { redirect_to admin_blacklists_url, notice: 'Blacklist entry successfully created.' }
       else
         format.html { render :new }
       end
@@ -25,7 +25,7 @@ class Admin::BlacklistsController < ApplicationController
   def update
     respond_to do |format|
       if @blacklist.update(blacklist_params)
-        format.html { redirect_to admin_blacklists_url, notice: 'Blacklist was successfully updated.' }
+        format.html { redirect_to admin_blacklists_url, notice: 'Blacklist entry successfully updated.' }
       else
         format.html { render :edit }
       end

@@ -1,4 +1,4 @@
-<%= form_for(@event, url: request.path) do |f| %>
+<%= form_for(@event, @form_params) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, required: true %> 
 

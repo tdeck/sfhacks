@@ -23,4 +23,11 @@
 class Event < ActiveRecord::Base
   scope :current, -> { where('start_date >= ?', Date.today) }
   validates_presence_of :title, :start_date, :address, :link, :blurb
+
+  def update_url
+    "/admin/listings/#{id}"
+  end
+  def edit_url
+    "/admin/listings/#{id}/edit"
+  end
 end

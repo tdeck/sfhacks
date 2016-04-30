@@ -17,7 +17,13 @@
       <tbody>
         <% listings.each do |listing| %>
           <tr class="<%= 'fnt--mid-gray' if !listing[:lead_id] %>">
-            <td><%= listing[:source] %></td>
+            <td>
+              <% if listing[:lead_id] %>
+                <%= listing[:source] %>
+              <% else %>
+                <a class="fnt--green" href="<%= listing[:edit_url] %>">posted</a>
+              <% end %>
+            </td>
             <td>
               <% if listing[:lead_id] %>
                 <input type="checkbox" name="reviewed_leads[]" value="<%= listing[:lead_id] %>">
@@ -26,7 +32,6 @@
             <td><%= listing[:date] %></td>
             <td><a href="<%= listing[:url] %>"><%= listing[:title] %></a></td>
             <td>
-
               <a href="<%=
                 'https://maps.google.com?' + {
                   saddr: 'San Francisco, CA',
