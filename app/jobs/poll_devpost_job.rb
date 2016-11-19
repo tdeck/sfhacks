@@ -43,7 +43,7 @@ class PollDevpostJob < ActiveJob::Base
     # Theoretically we should handle pagination but there aren't enough future
     # events to go beyond one page
     dom = Nokogiri::HTML(
-      open("http://devpost.com/hackathons?search=CA&challenge_type=in-person&sort_by=Submission+Deadline")
+      open("https://devpost.com/hackathons?search=CA&challenge_type=in-person&sort_by=Submission+Deadline")
     )
 
     dom.css('article.challenge-listing').map do |article|

@@ -19,7 +19,7 @@ class PollMlhJob < ActiveJob::Base
   # The code below is based on https://github.com/MLH/cal.mlh.io
 
   def get_season
-    (Time.now.month > 8 ? "f" : "s") + Time.now.year.to_s
+    "na-#{Time.now.year.to_s}"
   end
 
   def mlh_url
