@@ -2,16 +2,17 @@
 #
 # Table name: leads
 #
-#  id         :integer          not null, primary key
-#  source     :string
-#  date       :date
-#  title      :string
-#  location   :string
-#  url        :string
-#  reviewed   :boolean          default(FALSE), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  key        :string
+#  id           :integer          not null, primary key
+#  source       :string
+#  date         :date
+#  title        :string
+#  location     :string
+#  url          :string
+#  reviewed     :boolean          default(FALSE), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  key          :string
+#  other_fields :json             default({}), not null
 #
 # Indexes
 #

@@ -7,8 +7,33 @@ class Admin::ListingsController < ApplicationController
     @form_params = {url: '/admin/listings'}
   end
 
+  def new
+    @event = Event.new
+    @form_params = {url: '/admin/listings'}
+    if params[:lead_id]
+      @lead = Lead.find_by_id(params[:lead_id])
+      @event.update_attributes(
+        title: @lead.title,
+        start_date: @lead.date,
+        link: @lead.url,
+        address: @lead.location,
+        source_lead_id: @lead.id
+      )
+
+      @event.update_attributes(@lead.other_fields)
+    end
+  end
+
   def create
-    Event.create!(event_params)
+    event = Event.create!(event_params)
+
+    # If this was derived from a particular lead, mark that lead true when we
+    # create the event
+    lead = event.source_lead
+    if event.source_lead
+       lead.reviewed = true
+       lead.save!
+    end
 
     redirect_to admin_listings_url, notice: 'Post successfully created.'
   end
@@ -74,7 +99,8 @@ private
       :start_date,
       :end_date,
       :hours,
-      :restricted_to
+      :restricted_to,
+      :source_lead_id
     )
 
     args[:start_date] = Date.parse(args[:start_date])

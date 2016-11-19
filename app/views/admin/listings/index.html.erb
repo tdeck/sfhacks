@@ -20,6 +20,7 @@
         <th>Date</th>
         <th>Title</th>
         <th>Location</th>
+        <th>✍</th>
       </thead>
       <tbody>
         <% listings.each do |listing| %>
@@ -44,8 +45,16 @@
                   saddr: 'San Francisco, CA',
                   daddr: listing[:location]
                 }.to_query %>">
-                <%= listing[:location] %></td>
+                <%= listing[:location] %>
               </a>
+            </td>
+            <td>
+              <%=
+              if listing[:lead_id]
+                link_to '➡', admin_listings_new_path(lead_id: listing[:lead_id]), class: 'fnt--green'
+              end
+              %>
+            </td>
           </tr>
         <% end %>
       </tbody>

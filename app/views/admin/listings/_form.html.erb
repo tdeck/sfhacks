@@ -26,5 +26,7 @@
   <%= f.label :restricted_to do %>Restricted to <small>(optional)</small><% end %>
   <%= f.text_field :restricted_to %>
 
+  <%= f.hidden_field :source_lead_id %>
+
   <input class="btn--blue" type="submit" value="Submit">
 <% end %>

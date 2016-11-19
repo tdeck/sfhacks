@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'listings' => 'listings#create'
     patch 'listings' => 'listings#patch'
 
+    get 'listings/new' => 'listings#new'
     get 'listings/:id/edit' => 'listings#edit'
     put 'listings/:id' => 'listings#update'
 
