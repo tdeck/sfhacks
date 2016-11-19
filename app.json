@@ -1,0 +1,10 @@
+{
+  "name": "SF Hackathons",
+  "description": "List of hackathons in the San Francisco bay area",
+  "keywords": [],
+  "scripts": {
+    "dokku": {
+      "predeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
